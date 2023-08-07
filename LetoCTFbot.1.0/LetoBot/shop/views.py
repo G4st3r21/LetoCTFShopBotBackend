@@ -12,7 +12,7 @@ class GetProducts:
 		"""
 		GET request; get certain product; /api/v1/product/{product_id};
 		"""
-
+	# 	TODO: leha vstav' iz GPT code
 
 	def get_products(request):
 		"""
@@ -27,12 +27,20 @@ class GetProducts:
 		return JsonResponse(data, safe=False)
 
 
-def get_categories(request):
-	"""
-	POST request
-	get categories
-	/api/v1/cat/all
-	"""
+class GetCategories:
+	def get_categories(request):
+		"""
+		POST request
+		get categories
+		/api/v1/cat/all
+		"""
+		model = Category
+		categories = Category.objects.all()
+		data = [
+			{'name': category.name}
+			for category in categories
+		]
+		return JsonResponse(data, safe=False)
 
 
 # def
